@@ -27,10 +27,10 @@ $(document).ready(function () {
             },
             dom: 'fBlrtip',
             buttons: [
-                { extend: 'copyHtml5', className: 'btn btn-primary' },
-                { extend: 'excelHtml5', className: 'btn btn-primary', title: 'Mailbox List - ' + TenantID + " - " + todayDate },
-                { extend: 'csvHtml5', className: 'btn btn-primary', title: 'Mailbox List - ' + TenantID + " - " + todayDate },
-                { extend: 'pdfHtml5', className: 'btn btn-primary', orientation: 'landscape', title: 'Mailbox List - ' + TenantID + " - " + todayDate, exportOptions: {columns: [ 0,1,2,4,5 ]} },
+                { extend: 'copyHtml5', className: 'btn btn-primary btn-sm' },
+                { extend: 'excelHtml5', className: 'btn btn-primary btn-sm', title: 'Mailbox List - ' + TenantID + " - " + todayDate },
+                { extend: 'csvHtml5', className: 'btn btn-primary btn-sm', title: 'Mailbox List - ' + TenantID + " - " + todayDate },
+                { extend: 'pdfHtml5', className: 'btn btn-primary btn-sm', orientation: 'landscape', title: 'Mailbox List - ' + TenantID + " - " + todayDate, exportOptions: {columns: [ 0,1,2,4,5 ]} },
             ],
             "columns": [
                 { "data": "UPN" },
@@ -39,6 +39,10 @@ $(document).ready(function () {
                 { "data": "recipientType" },
                 { "data": "recipientTypeDetails" },
                 { "data": "AdditionalEmailAddresses" },
+                {
+                    "data": "UPN",
+                    render: function (id, type, row) { return '<a href=index.html?page=MailboxMobileDevices&Mailbox=' + id + '&Tenantfilter=' + TenantID + ' title="Mobile Device Information"><i class="fas fa-mobile-alt fa-fw"></i></a>'; }
+                }
             ],
             "order": [[0, "asc"]],
         });
